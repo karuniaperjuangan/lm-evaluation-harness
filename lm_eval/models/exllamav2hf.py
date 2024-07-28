@@ -34,8 +34,10 @@ from exllamav2 import (
 from torch.nn import CrossEntropyLoss
 from transformers import GenerationConfig, PretrainedConfig, PreTrainedModel, AutoTokenizer
 from transformers.modeling_outputs import CausalLMOutputWithPast
-import flash_attn
-
+try:
+    import flash_attn
+except:
+    print("Flash Attention is not supported")
 
 class Exllamav2HF(PreTrainedModel):
     def __init__(self, config: ExLlamaV2Config):
